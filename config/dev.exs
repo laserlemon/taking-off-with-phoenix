@@ -36,8 +36,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :workshop, Workshop.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "laserlemon",
   database: "workshop_dev",
   hostname: "localhost",
   pool_size: 10
