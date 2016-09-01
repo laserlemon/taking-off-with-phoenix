@@ -15,11 +15,15 @@ defmodule Workshop.User do
   @allowed_fields ~w(name email password password_confirmation)a
   @required_fields @allowed_fields
 
-  def changeset(user, params \\ %{}) do
+  def new_changeset(user, params \\ %{}) do
     user
     |> cast(params, @allowed_fields)
-    |> validate_required(@required_fields)
     |> update_change(:email, &String.downcase/1)
+  end
+
+  def validated_changeset(user, params) do
+    new_changeset(user, params)
+    |> validate_required(@required_fields)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
     |> validate_confirmation(:password, message: "must match password")
