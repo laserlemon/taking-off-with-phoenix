@@ -1,6 +1,20 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
+  <%= if @logged_in? do %>
+    <h2><%= gettext "Welcome, %{name}!", name: @current_user.name %></h2>
+  <% else %>
+    <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
+  <% end %>
   <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <div>
+    <%= if @logged_in? do %>
+      <%= link "Log Out", to: session_path(@conn, :delete),
+                          method: :delete,
+                          class: "btn btn-danger" %>
+    <% else %>
+      <%= link "Log In", to: session_path(@conn, :new),
+                         class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="row marketing">
