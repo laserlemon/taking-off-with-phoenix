@@ -20,6 +20,10 @@ defmodule Workshop.Router do
 
     get "/", PageController, :index
 
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
+    delete "/logout", SessionController, :delete
+
     get "/register", RegistrationController, :new
     post "/register", RegistrationController, :create
   end
