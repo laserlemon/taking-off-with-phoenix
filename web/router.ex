@@ -1,5 +1,6 @@
 defmodule Workshop.Router do
   use Workshop.Web, :router
+  import Workshop.CurrentUser
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,6 +8,7 @@ defmodule Workshop.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :current_user
   end
 
   pipeline :api do
