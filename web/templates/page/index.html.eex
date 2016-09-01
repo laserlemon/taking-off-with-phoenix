@@ -11,8 +11,10 @@
                           method: :delete,
                           class: "btn btn-danger" %>
     <% else %>
+      <%= link "Sign Up", to: registration_path(@conn, :new),
+                          class: "btn btn-primary" %>
       <%= link "Log In", to: session_path(@conn, :new),
-                         class: "btn btn-primary" %>
+                         class: "btn btn-link" %>
     <% end %>
   </div>
 </div>

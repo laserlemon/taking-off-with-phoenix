@@ -15,12 +15,12 @@ defmodule Workshop.RegistrationController do
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Great success!")
+        |> put_flash(:info, "Welcome!")
         |> put_session(:current_user_id, user.id)
         |> redirect(to: page_path(conn, :index))
       {:error, changeset} ->
         conn
-        |> put_flash(:error, "I've made a huge mistake.")
+        |> put_flash(:error, "Sorry, try again.")
         |> render("new.html", changeset: changeset)
     end
   end

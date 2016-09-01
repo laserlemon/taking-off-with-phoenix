@@ -19,7 +19,7 @@ defmodule Workshop.SessionController do
       |> redirect(to: page_path(conn, :index))
     else
       conn
-      |> put_flash(:error, "NOPE!")
+      |> put_flash(:error, "Sorry, try again.")
       |> render("new.html", changeset: changeset)
     end
   end
